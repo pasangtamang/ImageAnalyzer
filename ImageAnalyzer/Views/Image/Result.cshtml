@@ -1,0 +1,33 @@
+@using ImageAnalyzer.Models
+@model ResponseModel
+@{
+    ViewData["Title"] = "AI Result";
+}
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-center">AI Generated Caption & Alt Text</h2>
+        @if(Model.Alts.Any())
+        {
+            <h3>Suggested Alt text</h3>
+            <ul>
+                @foreach(var alt in Model.Alts)
+                {
+                    <li>@alt</li>
+                } 
+            </ul>           
+        }
+
+        @if(Model.Captions.Any())
+        {
+            <h3>Suggested Captions</h3>
+            <ul>
+                @foreach(var caption in Model.Captions)
+                {
+                    <li>@caption</li>
+                }
+            </ul>         
+        }
+
+        <a href="/image" class="btn btn-secondary mt-3">Analyze Another Image</a>
+    </div>
+</div>
